@@ -110,3 +110,9 @@ nav a:hover{color:var(--blue)}
 /* Show complete product screenshots at every aspect ratio */
 .tour-track img{object-fit:contain!important;object-position:center;background:#111}
 .tour-track figure:nth-child(1) img,.tour-track figure:nth-child(3) img{object-fit:contain!important;object-position:center}
+
+/* Consistent full-frame tour cards */
+.tour-track{grid-auto-columns:calc((100% - 36px)/3)}
+.tour-track img{height:auto!important;aspect-ratio:16/9;object-fit:contain!important;object-position:center;background:#111}
+@media(max-width:900px){.tour-track{grid-auto-columns:calc((100% - 18px)/2)}}
+@media(max-width:560px){.tour-track{grid-auto-columns:88%}.tour-track img{height:auto!important;aspect-ratio:16/9}}
