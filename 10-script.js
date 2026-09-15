@@ -17,3 +17,41 @@ primaryNav.querySelectorAll('a').forEach((link) => {
     primaryNav.classList.remove('is-open');
   });
 });
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealItems = document.querySelectorAll('.scroll-reveal');
+
+if (reducedMotion || !('IntersectionObserver' in window)) {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -45px' });
+  revealItems.forEach((item) => revealObserver.observe(item));
+
+  const orbit = document.querySelector('.hero-orbit');
+  let ticking = false;
+  const moveOrbit = () => {
+    const offset = Math.min(window.scrollY * 0.11, 80);
+    orbit.style.transform = `translate3d(0, ${offset}px, 0)`;
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(moveOrbit);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+const query = new URLSearchParams(window.location.search);
+if (query.get('message') === 'sent') {
+  const success = document.querySelector('.form-success');
+  success.hidden = false;
+  history.replaceState({}, '', `${window.location.pathname}#contact`);
+}
