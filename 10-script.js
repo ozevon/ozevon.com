@@ -55,3 +55,14 @@ if (query.get('message') === 'sent') {
   success.hidden = false;
   history.replaceState({}, '', `${window.location.pathname}#contact`);
 }
+
+
+const tourTrack = document.querySelector('.tour-track');
+const moveTour = (direction) => {
+  if (!tourTrack) return;
+  const card = tourTrack.querySelector('figure');
+  const gap = 18;
+  tourTrack.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || 340) + gap), behavior: reducedMotion ? 'auto' : 'smooth' });
+};
+document.querySelector('.tour-prev')?.addEventListener('click', () => moveTour(-1));
+document.querySelector('.tour-next')?.addEventListener('click', () => moveTour(1));
