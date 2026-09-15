@@ -62,7 +62,7 @@ const moveTour = (direction) => {
   if (!tourTrack) return;
   const card = tourTrack.querySelector('figure');
   const gap = 18;
-  tourTrack.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || 340) + gap), behavior: reducedMotion ? 'auto' : 'smooth' });
+  tourTrack.scrollTo({ left: Math.max(0, Math.min(tourTrack.scrollWidth - tourTrack.clientWidth, tourTrack.scrollLeft + direction * ((card?.getBoundingClientRect().width || 340) + gap))), behavior: reducedMotion ? 'auto' : 'smooth' });
 };
 document.querySelector('.tour-prev')?.addEventListener('click', () => moveTour(-1));
 document.querySelector('.tour-next')?.addEventListener('click', () => moveTour(1));
