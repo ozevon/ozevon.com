@@ -106,3 +106,7 @@ nav a:hover{color:var(--blue)}
 /* Contact contrast and legal footer spacing */
 .contact-section .section-label.light{color:#fff}
 .legal-footer .legal-links{gap:18px}
+
+/* Show complete product screenshots at every aspect ratio */
+.tour-track img{object-fit:contain!important;object-position:center;background:#111}
+.tour-track figure:nth-child(1) img,.tour-track figure:nth-child(3) img{object-fit:contain!important;object-position:center}
