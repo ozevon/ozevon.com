@@ -166,7 +166,12 @@ h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.12;letter-spacing:-.02em;
 .tour-track::-webkit-scrollbar{display:none}
 .tcard{flex:0 0 min(430px,85vw);scroll-snap-align:start;background:var(--dark2);
   border:1px solid rgba(244,243,239,.1);border-radius:var(--r);overflow:hidden}
-.tcard img{width:100%;height:230px;object-fit:contain;object-position:center;background:#fff}
+.tour-browser{margin:18px 18px 0;background:#fff;border:1px solid rgba(244,243,239,.16);border-radius:13px;overflow:hidden;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+.tour-browser-bar{height:36px;display:flex;align-items:center;gap:6px;padding:0 12px;background:#FAFAF8;border-bottom:1px solid rgba(11,16,32,.1)}
+.tour-browser-bar i{width:8px;height:8px;border-radius:50%;background:#D8D6CF;flex:none}
+.tour-browser-bar .url{margin-left:7px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:rgba(11,16,32,.45);background:#F0EEE8;border-radius:6px;padding:3px 9px;font-size:10px;font-weight:600}
+.tour-shot{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.tour-shot img{width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}
 .tcard .tcap{padding:24px 26px 28px}
 .tcard h4{font-size:17px;font-weight:700;margin-bottom:8px}
 .tcard p{font-size:14.5px;color:rgba(244,243,239,.6);line-height:1.6}
@@ -240,6 +245,7 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   .hero .ghost-card{top:-64px;right:6px}
 }
 @media (max-width:860px){
+  .tour-browser{margin:12px 12px 0}.tour-browser-bar{height:32px;padding:0 10px}.tour-browser-bar .url{font-size:9px}
   .wrap,.nav-in,.hero-in,.strip-in,.foot-in{padding-left:24px;padding-right:24px}
   .menu-btn{display:block}
   .nav-links{position:fixed;top:72px;left:0;right:0;background:var(--cream);
@@ -385,23 +391,38 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
       </div>
       <div class="tour-track rv" id="tourTrack">
         <article class="tcard">
-          <img src="20-tour-settings.webp" alt="Invoice settings in InvoBill" width="1200" height="1029" loading="lazy" decoding="async">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
+            <div class="tour-shot"><img src="20-tour-settings.webp" alt="Invoice settings in InvoBill" width="1200" height="1029" loading="lazy" decoding="async"></div>
+          </div>
           <div class="tcap"><h4>Invoice settings</h4><p>Tax rates, invoice series and defaults, configured once.</p></div>
         </article>
         <article class="tcard">
-          <img src="21-tour-reports.webp" alt="Reports and exports in InvoBill" width="1200" height="790" loading="lazy" decoding="async">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
+            <div class="tour-shot"><img src="21-tour-reports.webp" alt="Reports and exports in InvoBill" width="1200" height="790" loading="lazy" decoding="async"></div>
+          </div>
           <div class="tcap"><h4>Reports &amp; exports</h4><p>GST-ready reports and one-click exports for your CA.</p></div>
         </article>
         <article class="tcard">
-          <img src="22-tour-parties.webp" alt="Customer and supplier details in InvoBill" width="1095" height="1200" loading="lazy" decoding="async">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
+            <div class="tour-shot"><img src="22-tour-parties.webp" alt="Customer and supplier details in InvoBill" width="1095" height="1200" loading="lazy" decoding="async"></div>
+          </div>
           <div class="tcap"><h4>Customer &amp; supplier details</h4><p>Every party, GSTIN and balance in one place.</p></div>
         </article>
         <article class="tcard">
-          <img src="23-tour-permissions.webp" alt="Role-based permissions in InvoBill" width="1200" height="671" loading="lazy" decoding="async">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
+            <div class="tour-shot"><img src="23-tour-permissions.webp" alt="Role-based permissions in InvoBill" width="1200" height="671" loading="lazy" decoding="async"></div>
+          </div>
           <div class="tcap"><h4>Role-based permissions</h4><p>Decide who can create, approve and view.</p></div>
         </article>
         <article class="tcard">
-          <img src="24-tour-expenses.webp" alt="Expense tracking in InvoBill" width="1200" height="243" loading="lazy" decoding="async">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
+            <div class="tour-shot"><img src="24-tour-expenses.webp" alt="Expense tracking in InvoBill" width="1200" height="243" loading="lazy" decoding="async"></div>
+          </div>
           <div class="tcap"><h4>Expense tracking</h4><p>Every rupee accounted for, automatically.</p></div>
         </article>
       </div>
