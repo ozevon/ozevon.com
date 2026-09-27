@@ -178,6 +178,7 @@ h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.12;letter-spacing:-.02em;
 .tcard .tcap{padding:24px 26px 28px}
 .tcard h4{font-size:17px;font-weight:700;margin-bottom:8px}
 .tcard p{font-size:14.5px;color:rgba(244,243,239,.6);line-height:1.6}
+#tour-bb{margin-top:110px}
 
 /* featured second project */
 .prod-grid.bolt-grid{grid-template-columns:1.25fr 1fr;gap:64px;margin:28px 0 96px;
@@ -451,6 +452,43 @@ padding:10px 18px;border-radius:999px;font-size:14px;font-weight:650;text-decora
         </article>
       </div>
     </div>
+
+    <div id="tour-bb">
+      <div class="tour-head rv">
+        <div>
+          <p class="kicker on-dark">Inside Bolt &amp; Beam</p>
+          <h3>Four minutes from broken to booked.</h3>
+          <p>Pick a fix, grab a real open slot, hold it with a deposit. No phone tag.</p>
+        </div>
+        <div class="tour-nav" aria-label="Bolt &amp; Beam tour controls">
+          <button class="tour-btn" id="bbTourPrev" aria-label="Previous step">&#8592;</button>
+          <button class="tour-btn" id="bbTourNext" aria-label="Next step">&#8594;</button>
+        </div>
+      </div>
+      <div class="tour-track rv" id="bbTourTrack" tabindex="0" role="region" aria-label="Bolt &amp; Beam booking tour">
+        <article class="tcard">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">boltandbeam.lovable.app</span></div>
+            <div class="tour-shot"><img src="24-tour-bb-fix.webp" alt="Bolt &amp; Beam booking step one: choosing a drywall repair with a live price estimate" width="1200" height="900" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="tcap"><h4>Pick your fix</h4><p>Six repairs, priced up front. The estimate builds as you choose.</p></div>
+        </article>
+        <article class="tcard">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">boltandbeam.lovable.app</span></div>
+            <div class="tour-shot"><img src="25-tour-bb-slots.webp" alt="Bolt &amp; Beam booking step two: real open time slots for the chosen day" width="1200" height="900" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="tcap"><h4>Real open slots</h4><p>Only times that are genuinely free - travel buffers included.</p></div>
+        </article>
+        <article class="tcard">
+          <div class="tour-browser">
+            <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">boltandbeam.lovable.app</span></div>
+            <div class="tour-shot"><img src="26-tour-bb-confirmed.webp" alt="Bolt &amp; Beam booking confirmation with reference, deposit paid and what happens next" width="1200" height="900" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="tcap"><h4>Booked, deposit held</h4><p>The $49 deposit holds the slot and comes off the final bill.</p></div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -559,24 +597,29 @@ padding:10px 18px;border-radius:999px;font-size:14px;font-weight:650;text-decora
   els.forEach(function(el){ io.observe(el); });
 })();
 
-// Feature tour carousel
+// Feature tour carousels
 (function(){
-  var track = document.getElementById('tourTrack');
-  function cardStep(){
-    var card = track.querySelector('.tcard');
-    return card ? card.getBoundingClientRect().width + 24 : 320;
+  function wireTour(trackId, prevId, nextId){
+    var track = document.getElementById(trackId);
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function cardStep(){
+      var card = track.querySelector('.tcard');
+      return card ? card.getBoundingClientRect().width + 24 : 320;
+    }
+    document.getElementById(prevId).addEventListener('click', function(){
+      track.scrollBy({left: -cardStep(), behavior: reduced ? 'auto' : 'smooth'});
+    });
+    document.getElementById(nextId).addEventListener('click', function(){
+      track.scrollBy({left: cardStep(), behavior: reduced ? 'auto' : 'smooth'});
+    });
+    track.addEventListener('keydown', function(e){
+      var smooth = reduced ? 'auto' : 'smooth';
+      if(e.key==='ArrowRight'){ track.scrollBy({left: cardStep(), behavior: smooth}); }
+      if(e.key==='ArrowLeft'){ track.scrollBy({left: -cardStep(), behavior: smooth}); }
+    });
   }
-  document.getElementById('tourPrev').addEventListener('click', function(){
-    track.scrollBy({left: -cardStep(), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  });
-  document.getElementById('tourNext').addEventListener('click', function(){
-    track.scrollBy({left: cardStep(), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  });
-  track.addEventListener('keydown', function(e){
-    var smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-    if(e.key==='ArrowRight'){ track.scrollBy({left: cardStep(), behavior: smooth}); }
-    if(e.key==='ArrowLeft'){ track.scrollBy({left: -cardStep(), behavior: smooth}); }
-  });
+  wireTour('tourTrack', 'tourPrev', 'tourNext');
+  wireTour('bbTourTrack', 'bbTourPrev', 'bbTourNext');
 })();
 
 // Footer year
@@ -592,3 +635,4 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
