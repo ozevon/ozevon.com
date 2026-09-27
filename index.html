@@ -114,9 +114,9 @@ body.menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45
   box-shadow:0 25px 55px rgba(11,16,32,.16);text-decoration:none;color:var(--ink)}
 .hero .visual .hero-secondary img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left}
 .hero .visual .hero-secondary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
-.hero .visual .chip{z-index:2}
-.hero .visual .chip.tl{top:112px;left:-20px}
-.hero .visual .chip.br{top:-20px;bottom:auto;left:calc(44% - 16px);right:auto;background:var(--cream)}
+.hero .visual .chip{z-index:2;box-shadow:0 12px 32px rgba(11,16,32,.32)}
+.hero .visual .chip.tl{top:140px;left:-20px}
+.hero .visual .chip.br{top:34px;bottom:auto;left:calc(44% - 16px);right:auto;background:var(--cream)}
 
 /* ---------- principles strip ---------- */
 .strip{background:var(--blue);color:#fff}
@@ -209,7 +209,7 @@ h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.12;letter-spacing:-.02em;
 .field input,.field textarea{width:100%;background:rgba(255,255,255,.09);
   border:1.5px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;
   font-size:16px;font-family:var(--font);padding:15px 18px;outline:none;transition:border-color .2s}
-.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.5)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.9)}
 .field input:focus,.field textarea:focus{border-color:#fff;background:rgba(255,255,255,.14)}
 .field textarea{min-height:140px;resize:vertical}
 .btn-lime{background:var(--lime);color:var(--ink);padding:16px 34px;font-size:16px;border:0;cursor:pointer}
@@ -247,7 +247,7 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   .chip.tl{left:6px}.chip.br{right:6px}
   .hero .visual .hero-secondary{right:8px;top:2px}
   .hero .visual .chip.tl{left:6px}
-  .hero .visual .chip.br{left:calc(44% - 16px);right:auto}
+  .hero .visual .chip.br{left:calc(44% - 16px);right:auto;top:56px}
 }
 @media (max-width:860px){
   .tour-browser{margin:12px 12px 0}.tour-browser-bar{height:32px;padding:0 10px}.tour-browser-bar .url{font-size:9px}
@@ -263,8 +263,8 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   .hero .visual{padding-top:64px}
   .hero .visual .hero-primary{width:84%}
   .hero .visual .hero-secondary{width:58%;top:0;right:0}
-  .hero .visual .chip.tl{top:76px;left:0}
-  .hero .visual .chip.br{left:calc(42% - 10px);right:auto;top:-10px;bottom:auto;font-size:11px;padding:8px 11px}
+  .hero .visual .chip.tl{top:114px;left:0}
+  .hero .visual .chip.br{left:calc(42% - 10px);right:auto;top:48px;bottom:auto;font-size:11px;padding:8px 11px}
   .prod-grid.bolt-grid{padding-top:48px;gap:30px;margin-bottom:68px}
   .tour-head{flex-direction:column;align-items:flex-start}
   .foot-in{flex-direction:column;align-items:flex-start}
@@ -635,4 +635,5 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
