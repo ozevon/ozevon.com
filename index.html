@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F3EF">
 <title>Ozevon - Software for clearer work</title>
 <link rel="canonical" href="https://ozevon.com/">
 <meta name="description" content="Ozevon builds focused software that makes complex work feel clear. Meet InvoBill, our first product.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="Ozevon - Software for clearer work">
 <meta property="og:description" content="Ozevon builds focused software that makes complex work feel clear. Meet InvoBill, our first product.">
 <meta property="og:type" content="website">
@@ -27,7 +28,7 @@
 <style>
 :root{
   --cream:#F4F3EF; --ink:#0B1020; --blue:#315EFB; --lime:#C0F768; --green:#22c55e;
-  --ink70:rgba(11,16,32,.7); --ink60:rgba(11,16,32,.62); --ink45:rgba(11,16,32,.45);
+  --ink70:rgba(11,16,32,.7); --ink60:rgba(11,16,32,.62); --ink45:rgba(11,16,32,.68);
   --line:rgba(11,16,32,.1); --dark:#0B1020; --dark2:#131A30;
   --r:18px; --max:1240px;
   --font:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;
@@ -259,9 +260,14 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   .tour-head{flex-direction:column;align-items:flex-start}
   .foot-in{flex-direction:column;align-items:flex-start}
 }
+.skip{position:absolute;left:16px;top:-72px;z-index:100;background:var(--ink);color:var(--cream);
+padding:10px 18px;border-radius:999px;font-size:14px;font-weight:650;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
 </style>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 <nav class="nav" aria-label="Main navigation">
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="Ozevon home">
@@ -280,7 +286,7 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   </div>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero" id="top" tabindex="-1">
   <div class="hero-in">
     <div>
       <p class="kicker rv">Independent software company</p>
@@ -390,7 +396,7 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
           <button class="tour-btn" id="tourNext" aria-label="Next feature">&#8594;</button>
         </div>
       </div>
-      <div class="tour-track rv" id="tourTrack">
+      <div class="tour-track rv" id="tourTrack" tabindex="0" role="region" aria-label="InvoBill feature tour">
         <article class="tcard">
           <div class="tour-browser">
             <div class="tour-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">invobill.net</span></div>
@@ -551,6 +557,11 @@ footer{background:#ECEAE4;border-top:1px solid var(--line)}
   });
   document.getElementById('tourNext').addEventListener('click', function(){
     track.scrollBy({left: cardStep(), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+  track.addEventListener('keydown', function(e){
+    var smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    if(e.key==='ArrowRight'){ track.scrollBy({left: cardStep(), behavior: smooth}); }
+    if(e.key==='ArrowLeft'){ track.scrollBy({left: -cardStep(), behavior: smooth}); }
   });
 })();
 
