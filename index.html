@@ -308,7 +308,7 @@ padding:10px 18px;border-radius:999px;font-size:14px;font-weight:650;text-decora
 
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important;transition:none!important}@media(max-width:860px){.menu-btn{display:none!important}.nav-links{display:flex!important;position:static!important;box-shadow:none!important;border:0!important;flex-direction:row!important;flex-wrap:wrap!important;padding:0!important;gap:10px!important}.nav-in{height:auto!important;min-height:72px!important;flex-wrap:wrap!important;padding-top:12px!important;padding-bottom:12px!important}.nav-links a{font-size:14px!important;padding:6px 0!important;border:0!important}.nav-links .btn-dark{margin:0!important;padding:6px 12px!important}}</style></noscript>
-</head>
+<style>.trust-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.trust-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;font-size:11px;line-height:1.2;font-weight:550;color:var(--ink60,var(--muted));text-decoration:none;background:transparent}.trust-pill svg{flex-shrink:0}.trust-pill:focus-visible{outline:3px solid var(--blue);outline-offset:4px}a.trust-pill:hover{color:var(--blue);border-color:var(--blue)}@media(max-width:650px){.trust-row{gap:8px;width:100%;padding-top:8px}.trust-pill{font-size:11px}}</style></head>
 <body>
 <a class="skip" href="#top">Skip to content</a>
 <nav class="nav" aria-label="Main navigation">
@@ -630,9 +630,9 @@ padding:10px 18px;border-radius:999px;font-size:14px;font-weight:650;text-decora
       <a href="https://medium.com/@ozevon" target="_blank" rel="noopener">Medium</a>
       <a href="https://substack.com/@ozevon" target="_blank" rel="noopener">Substack</a>
       <a href="https://npmjs.com/~ozevon" target="_blank" rel="noopener">npm</a>
-      <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
     </nav>
+    <div class="trust-row" aria-label="Connection security and privacy"><span class="trust-pill" title="This website uses HTTPS (TLS) to encrypt the connection between your browser and the site."><svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>SSL Secured</span><a class="trust-pill" href="privacy.html"><svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5M8 12h8M8 16h6"/></svg>Privacy Policy</a></div>
     <p class="copy">&copy; <span id="yr">2026</span> Ozevon</p>
   </div>
 </footer>
@@ -704,4 +704,4 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
 </body>
-            </html>
+  </html>
